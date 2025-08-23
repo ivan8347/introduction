@@ -1,5 +1,5 @@
 ﻿//#define STRING_OPERACION
-//#define DATA_TYPES
+#define DATA_TYPES
 #define FACTORIAL
 using System;
 using System.Collections.Generic;
