@@ -1,6 +1,7 @@
 ﻿//#define FACTORIAL
 //#define MULTIPLICATION
-#define MULTIPLICATION_1
+//#define MULTIPLICATION_1
+//#define DATATYPSE
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,23 @@ namespace HW_
     {
         static void Main(string[] args)
         {
+#if DATATYPSE
+            byte var1 = 0;
+            Console.WriteLine($"{var1.GetType()} занимает {sizeof(byte)}Байт памяти,и принимает значение в диапазоне:{byte.MinValue}.....{byte.MaxValue}");
+            short var3 = 0;
+            Console.WriteLine($"{var3.GetType()} занимает {sizeof(short)}Байт памяти,и принимает значение в диапазоне:{short.MinValue}.....{short.MaxValue}");
+            int var2 = 0;
+            Console.WriteLine($"{var2.GetType()} занимает {sizeof(int)}Байт памяти,и принимает значение в диапазоне:{int.MinValue}.....{int.MaxValue}");
+            long var4 = 0;
+            Console.WriteLine($"{var4.GetType()} занимает {sizeof(long)}Байт памяти,и принимает значение в диапазоне:{long.MinValue}.....{long.MaxValue}");
+            float f = 1;
+            Console.WriteLine(f.GetType());
+            double f_2 = 1;
+            Console.WriteLine(f_2.GetType());
+            decimal f_3 = 2;
+            Console.WriteLine(f_3.GetType());
+#endif
+
 
 #if FACTORIAL
             Console.Write("Введите число для вычесления факториала:  ");
@@ -26,27 +44,26 @@ namespace HW_
             Console.WriteLine($"Факториал числа {n} равен {f} ");
 
 #endif
-            // double  a,b, c;
-            // char s;
-            //  Console.WriteLine($"Введите уравнение в одну строку:  ");
-            //double a, b, c;
-            //char s;
-            // double a,b,c =  Convert.ToInt32(Console.ReadLine());
-            // char s = Convert.ToChar(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine($"Введите уравнение в одну строку: ");
+                string input = Console.ReadLine();
+                string[] parts = input.Split(' ');
+                double a = double.Parse(parts[0]);
+                char s = char.Parse(parts[1]);
+                double b = double.Parse(parts[2]);
+                double c;
+                switch (s)
+                {
+                    case '+': c = a + b;  Console.WriteLine($" {a} + {b} = {c}"); break;
+                    case '-': c = a - b; Console.WriteLine($" {a} - {b} = {c}"); break;
+                    case '*': c = a * b; Console.WriteLine($" {a} * {b} = {c}"); break;
+                    case '/': c = a / b; Console.WriteLine($" {a} / {b} = {c}"); break;
 
-            //  switch (s)
-            //  {
-            //       case '+': c = a + b; Console.WriteLine($" {a} + {b} = {c}");
-            //           break;
-            //     case '*': c = a * b; cout << a << "*" << b << "=" << c; break;
-            //     case '/': c = a / b; cout << a << "/" << b << "=" << c; break;
-            //     case '+': c = a + b; cout << a << "+" << b << "=" << c; break;
-            //     case '-': c = a - b; cout << a << "-" << b << "=" << c; break;
-            //     default: cout << "Ошибка!!!!!" << endl;
-            //  }
-            // while (true)
-            // int c;
+                }
+            } 
 
+            
 
 
 #if MULTIPLICATION
@@ -110,6 +127,7 @@ namespace HW_
 
                 // Запоминаем выбранный пример для выделения в таблице
                 var highlightedExample = (J: numJ, I: numI, Answer: correctAnswer);
+
                 // Запрос ответа пользователя
                 Console.Write("\tВаш ответ: ");
                 string userInput = Console.ReadLine();
